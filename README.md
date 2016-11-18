@@ -1,14 +1,11 @@
 # Push AWS
---------
 A series of scripts to create and easily maintain Amazon AWS EC2 instances of Push Backend.
 
 ## Requirements
---------
 * A *nix (including MacOS) system
 * Ruby 2.1 or greater
 
 ## Setup
---------
 The point of this is to make life much easier, since the AWS console is confusing, at best.
 
 There are two steps for this part of the process.

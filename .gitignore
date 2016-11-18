@@ -1,3 +1,5 @@
 **/.DS_STORE
 **/aws_credentials
 Gemfile.lock
+**.pem
+.byebug_history

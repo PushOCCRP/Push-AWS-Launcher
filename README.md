@@ -45,7 +45,7 @@ The script should handle literally everything else and at the end output some mo
 
 ### Notes
 
-* The script automatically creates a new ssh key pair to access your server. Right now there's not way to set your own, but if you'd like that let me know.
+* The script automatically creates a new ssh key pair to access your server. Right now there's not a way to set your own, but if you'd like that let me know.
 * The instructions at the end give you samples on how to ssh into your sever. Really, you should move the key to your ~/.ssh folder for safe keeping.
 * The public IP address is an Amazon Elastic IP, you usually only get ~5 per AWS account, so use them wisely.
 * This automatically boots up a ```t2.micro``` instance. This sits on Amazon's 'free tier' and, in my experience is more than enough to handle moderate traffic. Feel free to upgrade it. 
@@ -59,7 +59,5 @@ Pull requests are awesome, please feel free to submit them.
 If you have questions, please contact me.
 
 Christopher Guess
-
 [cguess@gmail.com](mailto:cguess@gmail.com)
-
 [PGP Key](https://www.keybase.io/cguess)

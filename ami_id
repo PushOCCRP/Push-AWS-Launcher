@@ -3,4 +3,11 @@
 # Last Edited:  2016-11-15
 # Version Name: v1.2
 
-ami-c9e5b4ba
+eu-west-1: ami-c9e5b4ba
+eu-west-2: ami-2edbc74a
+eu-central-1: ami-d7f770b8
+us-east-1: ami-68c37312
+us-east-2: ami-22f3dc47
+us-west-1: ami-ee8bb48e
+us-west-2: ami-563eeb2e
+ap-southeast-2: ami-dce900be

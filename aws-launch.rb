@@ -22,16 +22,22 @@ CREDENTIALS_FILENAME = 'aws_credentials'.freeze
 class PushManagement
   # Prompts for information and creates Client object for AWS
   @ec2_client = nil
+  @credentials
+
+  def region
+    @region
+  end
 
   def client
     # If a client is already created, return it
     return @ec2_client if !@ec2_client.nil?
 
     credentials = load_credentials
+    @region = credentials[:aws_region]
 
     @ec2_client = Aws::EC2::Client.new(
       region: credentials[:aws_region],
-        access_key_id: credentials[:aws_access_key_id],
+      access_key_id: credentials[:aws_access_key_id],
       secret_access_key: credentials[:aws_secret_access_key]
     )
 
@@ -52,23 +58,28 @@ class PushManagement
 
     error "No file '#{AMI_ID_FILENAME}' found." if !File.file?(AMI_ID_FILENAME)
 
+    credentials = load_credentials
+    region = credentials[:aws_region]
+
     File.open(AMI_ID_FILENAME, "r") do |f|
       f.each_line do |line|
         if(!line.start_with?("#") && line.length > 0)
           # We may add other options 
-          if(line.start_with?("ami-"))
-            ami_id = line.strip
+          if(line.start_with?(region))
+            ami_id = line.strip.gsub("#{region}: ", '')
           end
-      end
+        end
       end
     end
 
     error "Error: No AMI name set in the '#{AMI_ID_FILENAME}' file." if ami_id.nil?
+    error "AMI not available in #{region} (or there was a typo), contact @cguess to make a copy" if(ami_id.start_with?('ami-') == false)
 
     return ami_id
   end
 
   def load_credentials
+    return @credentials unless @credentials.nil?
     region = nil
     access_key_id = nil
     secret_access_key = nil
@@ -107,9 +118,11 @@ class PushManagement
       error "Error: No AWS secret access key 'aws_secret_access_key=' set in the '#{CREDENTIALS_FILENAME}' file."
     end
 
-    return {aws_region: region, 
+    @credentials = {aws_region: region, 
         aws_access_key_id: access_key_id, 
         aws_secret_access_key: secret_access_key}
+
+    return @credentials
   end
 
   # Start an EC2 instance using the provided AMI

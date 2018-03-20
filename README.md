@@ -18,7 +18,7 @@ There are three steps for this part of the process.
 *Note:* If you do not have an Amazon AWS account yet, you'll have to sign up here https://aws.amazon.com.
 Don't worry, it's free to sign up.
 
-1. Follow the steps that Amazon provides to generate and download keys at https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
+1. Follow the steps that Amazon provides to generate and download keys at https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-setting-up.html
 2. Take note of the ```Access Key ID``` and ```Secret Access Key```
 3. Make a copy of the ```aws_credentials_template``` in this repository and name the copy ```aws_credentials```
 4. Edit the ```aws_credentials``` file, replacing the lines
